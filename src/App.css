@@ -1,8 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
 }
 
 .logo {
@@ -39,4 +38,18 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Ajustes visuales simples para Home */
+.promo-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 1px solid #cfe8d8;
+}
+.promo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.promo-img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }

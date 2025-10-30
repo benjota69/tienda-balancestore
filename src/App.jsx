@@ -1,17 +1,41 @@
+// Aquí se define las Rutas de las páginas, por ejemplo "/app/catalogo" y entrará a la página Catalogo
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import AppLayout from "./components/AppLayout";
+import Home from "./pages/Home";
+import Catalogo from "./pages/Catalogo";
+import Carrito from "./pages/Carrito";
+import Nosotros from "./pages/Nosotros";
+import Contacto from "./pages/Contacto";
+import Descuento from "./pages/Descuento";
+import Checkout from "./pages/Checkout";
+import PaginaBoleta from "./pages/PaginaBoleta";
 import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
+import ProductoDetalle from "./pages/ProductoDetalle";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </BrowserRouter>
+        <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/app" element={<AppLayout />}>
+              <Route index element={<Home />} />
+              <Route path="catalogo" element={<Catalogo />} />
+              <Route path="catalogo/:id" element={<ProductoDetalle />} />
+              <Route path="carrito" element={<Carrito />} />
+              <Route path="nosotros" element={<Nosotros />} />
+              <Route path="contacto" element={<Contacto />} />
+              <Route path="descuento" element={<Descuento />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="boleta" element={<PaginaBoleta />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+        </CartProvider>
     </AuthProvider>
   );
 }
